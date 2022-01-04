@@ -1,14 +1,10 @@
 import argparse
-from functions import open_load
+from functions import is_number, open_load, is_number
 
 parser = argparse.ArgumentParser(exit_on_error=False)
 
 parser.add_argument("-f", "--inputfile", help = "Název vstupního souboru", type = str)
-parser.add_argument("-l", "--maxlength", help = "Maximální délka", type = int)
-try:
-    parser.parse_args('--maxlength a'.split())
-except argparse.ArgumentError:
-    print('Catching an argumentError')
+parser.add_argument("-l", "--maxlength", help = "Maximální délka", type = is_number)
 parser.add_argument("-o", "--outputfile", help = "Název výstupního souboru")
 
 arguments = parser.parse_args()
