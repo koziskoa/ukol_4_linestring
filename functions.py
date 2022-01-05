@@ -25,7 +25,8 @@ def open_load (name):
         exit()
 
 def v_to_number (geo_file):
-   """komentář"""
+   """## Kontrola souřadnic
+      pokud souřadnice chybí (jedna, nebo obě), program vypíše chybu a skončí"""
    for i in geo_file["features"]:
       if isinstance(i["geometry"]["coordinates"],list):
          try:
@@ -33,7 +34,7 @@ def v_to_number (geo_file):
                j[0] = float(j[0])
                j[1] = float(j[1])
          except IndexError:
-            print("Na pozici souřadnic x a y se nenachází číselná hodnota, nebo souřadnice chybí, nelze dále pracovat. ")
+            print("Chybí souřadnice, nelze dále pracovat. ")
             exit()
       return (geo_file)
 
@@ -53,5 +54,3 @@ def is_positive_number (n):
       print("Číslo nesmí být záporné")
       exit()
 
-cy=open_load("cyklo_WGS.geojson")
-print(cy)
