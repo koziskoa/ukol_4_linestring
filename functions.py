@@ -1,6 +1,7 @@
 import json
 from json.decoder import JSONDecodeError
 from pyproj import Transformer
+from math import sqrt
 
 wgs2jtsk = Transformer.from_crs(4326,5514, always_xy=True)
 
@@ -54,3 +55,8 @@ def is_positive_number (n):
       print("Číslo nesmí být záporné")
       exit()
 
+def distance (point0, point1):
+    """## Výpočet vzdálenosti mezi 2 body
+    -do parametru vstupují proměnné jakožto dvojice čísel"""
+    dist = sqrt((point0[0]-point1[0])**2+(point0[1]-point1[1])**2)
+    return dist
