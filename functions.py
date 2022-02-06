@@ -60,3 +60,5 @@ def distance (point0, point1):
     -do parametru vstupují proměnné jakožto dvojice čísel"""
     dist = sqrt((point0[0]-point1[0])**2+(point0[1]-point1[1])**2)
     return dist
+
+ 
