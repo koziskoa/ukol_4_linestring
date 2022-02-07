@@ -1,4 +1,4 @@
-from functions import open_load, transfer_coor, distance
+from functions import open_load, transfer_coor
 from geometry import LineString
 
 cyklotrasy = open_load("cyklo.geojson")
