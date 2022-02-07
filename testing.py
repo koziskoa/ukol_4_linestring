@@ -1,4 +1,4 @@
-from functions import open_load, transfer_coor
+from functions import open_load, transfer_coor, new_geojson
 from geometry import LineString
 
 cyklotrasy = open_load("cyklo.geojson")
@@ -23,6 +23,6 @@ for i in cyklotrasy["features"]:
         #for point in modified_list:
             #print(point)
         i["geometry"]["coordinates"] = modified_list
-print(cyklotrasy)
+new_geojson(cyklotrasy, "output_file.geojson")
 
 
