@@ -47,18 +47,28 @@ def transfer_coor (x,y):
 def is_positive_number (n):
    """Pokusí se převést na číslo, pokud proběhne, zkontroluje, zda je číslo kladné"""
    try:
-      number = float(n)
+      number = int(n)
+      if number < 0:
+         print("V argumentu -l nesmí být číslo záporné")
+         exit()
+      return(number)
    except ValueError:
-      print("Musí být zadané číslo")
+      print("Do argumentu -l musí být zadané číslo")
       exit()
-   if number < 0:
-      print("Číslo nesmí být záporné")
-      exit()
-
+   
 def distance (point0, point1):
     """## Výpočet vzdálenosti mezi 2 body
     -do parametru vstupují proměnné jakožto dvojice čísel"""
     dist = sqrt((point0[0]-point1[0])**2+(point0[1]-point1[1])**2)
     return dist
+
+def new_geojson (var, name):
+    """## Vytvoří ze slovníku nový soubor GEOJSON
+    """
+    try:
+     with open(name, "w", encoding="utf-8") as outfile:
+      json.dump(var, outfile, indent=5)
+    except Exception:
+      print("Soubor se nepodařilo zapsat.")
 
  
