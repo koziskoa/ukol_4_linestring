@@ -30,7 +30,7 @@ Příklad struktury souboru .geojson:
     
 Pro účely tohoto programu se dají data stáhnout z [pražského geoportálu](https://www.geoportalpraha.cz/cs/data/otevrena-data/0AF6DE97-68B3-4CD6-AE5D-76ACEEE50636). 
 ### Stručný popis chodu programu
-Před spuštěním programu je třeba vypsat argumenty `-f, -l a -o`, které se později během chodu programu zpracují. Argument `-f` bude nést název souboru s daty, které chce uživatel procházet (např.: **"*-f input.geojson*"**). Argument `-l` slouží pro stanovení maximální délky linie v m. Je tedy třeba zadat celé kladné číslo. (např.**"*-l 15*"**). Do argumentu `-o` se zadá název výstupního souboru (např.: **"*-o output.geojson*"**). Výstupní soubor bude opět typu `.geojson` a pro každé spuštění programu se vytvoří nový výstupní soubor. Všechny zmíněné argumenty jsou povinné. Musí se tedy zadat všechny. V momentě, kdy uživatel nezadá všechny argumenty, porgram nebude funkční. 
+Před spuštěním programu je třeba vypsat argumenty `-f, -l a -o`, které se později během chodu programu zpracují. Argument `-f` bude nést název souboru s daty, které chce uživatel procházet (např.: ***-f "input.geojson"***). Argument `-l` slouží pro stanovení maximální délky linie v m. Je tedy třeba zadat celé kladné číslo. (např.***-l 15***). Do argumentu `-o` se zadá název výstupního souboru (např.: ***-o "output.geojson"***). Výstupní soubor bude opět typu `.geojson` a pro každé spuštění programu se vytvoří nový výstupní soubor. Všechny zmíněné argumenty jsou povinné. Musí se tedy zadat všechny. V momentě, kdy uživatel nezadá všechny argumenty, porgram nebude funkční. 
 
 Příklad zadávání argumentů: `-f "highways.geojson", -l 20 a -o "modified_highways.geojson"`
 
