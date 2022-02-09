@@ -12,7 +12,7 @@ def open_load (name):
     try:
         with open(name, encoding="utf-8") as geojsonfile:
             reader = json.load(geojsonfile)
-            reader_n = v_to_number(reader)
+            reader_n = coor_control(reader)
         return reader_n
     
     except FileNotFoundError:
@@ -22,18 +22,18 @@ def open_load (name):
         print(f"Soubor {name} není programu přístupný.")
         exit()
     except JSONDecodeError:
-        print(f"Soubor {name} je prázdný.")
+        print(f"Soubor {name} nelze dekódovat.")
         exit()
 
-def v_to_number (geo_file):
+def coor_control (geo_file):
    """## Kontrola souřadnic
       pokud souřadnice chybí (jedna, nebo obě), program vypíše chybu a skončí"""
-   for i in geo_file["features"]:
-      if isinstance(i["geometry"]["coordinates"],list):
+   for feature in geo_file["features"]:
+      if isinstance(feature["geometry"]["coordinates"],list):
          try:
-            for j in i["geometry"]["coordinates"]:
-               j[0] = float(j[0])
-               j[1] = float(j[1])
+            for coords in feature["geometry"]["coordinates"]:
+               coords[0] = float(coords[0])
+               coords[1] = float(coords[1])
          except IndexError:
             print("Chybí souřadnice, nelze dále pracovat. ")
             exit()
@@ -44,7 +44,7 @@ def transfer_coor (x,y):
     - vrátí dvojici čísel x a y v souřadnicovém systému JTSK"""
     return wgs2jtsk.transform(x,y)
 
-def is_positive_number (n):
+def is_positive_int (n):
    """Pokusí se převést na číslo, pokud proběhne, zkontroluje, zda je číslo kladné"""
    try:
       number = int(n)
@@ -56,11 +56,6 @@ def is_positive_number (n):
       print("Do argumentu -l musí být zadané číslo")
       exit()
    
-def distance (point0, point1):
-    """## Výpočet vzdálenosti mezi 2 body
-    -do parametru vstupují proměnné jakožto dvojice čísel"""
-    dist = sqrt((point0[0]-point1[0])**2+(point0[1]-point1[1])**2)
-    return dist
 
 def new_geojson (var, name):
     """## Vytvoří ze slovníku nový soubor GEOJSON
